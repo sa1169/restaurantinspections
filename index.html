@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Austin Restaurant Inspections</title>
+	
+	<!-- Style -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<!--<link href="css/custom.css" rel="stylesheet" media="screen">-->
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="css/custom2.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet"> 
+	
+	<style>
+	th, td {
+	text-align: right;
+	}
+	</style>
+
+	<!-- Javascript -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="restaurantscores.json"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<body>
+
+<div id="header"></div>
+<div id="main">
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top ">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Austin Restaurant Inspections</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#about">Home</a></li>
+            <li><a href="#lowrankgraphs">By the Numbers</a></li>
+            <li><a href="#googlemap">Low Ranking Restaurants (Map)</a></li>
+            <li><a href="#datasetsection">All Inspection Scores</a></li>
+          </ul>
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    &nbsp;
+    <div id="whitespace"></div>
+<section id="about">
+<h2>&#171; Austin Restaurant Inspections &#187;</h2>
+  <p><p>The Austin/Travis County Health and Human Services Department inspects more than 4,000 food establishments in Austin, which are required to be inspected twice a year. A wide variety of food industries, such as restaurants, delicatessens, school cafeterias, grocery stores, retail meat markets, bakeries and bars, are inspected in the city. A score of 100 is given for establishments that do not receive a violation from inspection. Businesses that score below a 70 are required to bring their score up, in accordance with the Texas Food Establishment Rules. If they fail to bring their score up after re-inspection, compliance actions are taken against the business.</p><br/>
+ <hr>
+  
+</section><!--close about section-->
+ 
+ <!--close about section-->
+ <section id="lowrankgraphs">
+    <div class="row">
+    	<div class="col-md-12">
+    	<div class="clearfix visible-xs-block"></div>
+            <h3 class="courierfont">By the Numbers</h3>
+            <br />
+    	</div>
+    </div>
+    <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-search  fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">20,486</h4>
+                    <p class="text-muted bodygraphiccss text-center">Total Restaurants Inspected <br />(2015-2017)</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-frown-o fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">282</h4>
+                    <p class="text-muted bodygraphiccss text-center">Restaurants Below 70 <br />(2015-2017)</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">20,204</h4>
+                    <p class="text-muted bodygraphiccss text-center">Restaurants Above 70 <br />(2015-2017)</p>
+                </div>
+            </div>
+    <div class="row text-center">
+                <div class="col-md-12">
+                <br />
+                <p>Between 2015 and 2017, 20,486 restaurants were inspected. During this time, the lowest scoring restaurant was Ichiban, located on 7310 Burnet Road, which received a score of 36 on October 23, 2015. Three  days later, on October 26, 2015, they raised their score to 86. The second lowest score was a tie between two restaurants that received inspection scores of 45. Crawfish Shack and Oyster Bar, 2013 West Wells Branch Parkway, scored this rating on June 16, 2016, but raised their score to 74 about a month later. Polvo's Restaurant & Bar, 2004 South 1st Street, scored this rating on December 23, 2015, but also raised their score to 78 about a month later.</p>
+                <p>While 282 businesses scored below a 70, there were 2,494 businesses that received perfect scores of 100 for their inspections from 2015 and 2017. View the charts below to see the breakdown of the number of low ranking and high ranking businesses by score range from 2015 to 2017.</p>
+                <br />
+                </div>
+     </div>                   
+            
+            
+ 	<div class="row">
+		<!-- Graph 1 -->
+        <div class="col-lg-6">
+				<h4 class="courierfont2">Low Ranking Restaurants by Year</h4>
+				<form id="lowrankbyyear" name="lowrankbyyear" onchange="drawChart2()" >
+     			<select id="thedropdown2">
+     			<option value="2015">2015</option>
+    			<option value="2016">2016</option>
+	 			<option value="2017">2017</option>
+     			</select>
+  				</form>
+  			<div style="width: 100%">
+    			<div id="chart_div"></div>
+    		</div>
+			<br />
+			<br />
+				</div><!-- /END Col 6 2 -->
+
+ 		 	<div class="col-md-6">
+ 			 <!-- Graph 2 -->
+				<h4 class="courierfont2">High Ranking Restaurants by Year</h4>
+				<form id="highrankbyyear" name="highrankbyyear" onchange="drawChart3()" >
+     			<select id="thedropdown3">
+     			<option value="2015">2015</option>
+    			<option value="2016">2016</option>
+	 			<option value="2017">2017</option>
+     			</select>
+  				</form>
+  			<div style="width: 100%">
+    			<div id="chart_div2"></div>
+    		</div>
+ 			 </div>
+ 	</div>
+</section><!--close Bar Graphs section-->
+<hr>
+
+
+<section id="googlemap">
+		<div class="clearfix visible-xs-block"></div>
+		<div class="row">
+		<div class="col-md-12">
+		<!-- Map -->	
+					<h3 class="courierfont">Low Ranking Restaurants in 2017 (score 70 or below)</h3>
+					<p>Curious to see what restaurants have scored below a 70 this year? Find your zipcode to view restaurants in that area and see their score. If you don't see your zipcode listed, it's good news! That means your zipcode's businesses scored above a 70.</p>
+					<form id="form1" onchange="drawChart()">
+						<select id="thedropdown">
+							<option value="0";>Select a Zipcode:</option>
+							<option value="78617">78617</option>
+							<option value="78701">78701</option>
+							<option value="78704">78704</option>
+							<option value="78705">78705</option>
+							<option value="78717">78717</option>
+							<option value="78719">78719</option>
+							<option value="78722">78722</option>
+							<option value="78723">78723</option>
+							<option value="78724">78724</option>
+							<option value="78729">78729</option>
+							<option value="78730">78730</option>
+							<option value="78731">78731</option>
+							<option value="78741">78741</option>
+							<option value="78746">78746</option>
+							<option value="78751">78751</option>
+							<option value="78752">78752</option>
+							<option value="78753">78753</option>
+							<option value="78756">78756</option>
+							<option value="78757">78757</option>
+							<option value="78758">78758</option>
+						</select>
+					</form>
+						<div id="map_div"></div>
+						<table width="50%">
+					<thead>
+					<th>Restaurant / Score</th><th>Zipcode</th>
+				</thead>
+				<tbody id="mapanswer">
+				</tbody>
+				</table>			
+				</div><!-- /END Map -->
+   		</div><!--close row--> 
+  </section><!--close Google Map section-->
+  <hr> 
+  
+  <!--close Dataset section-->
+  <section id="datasetsection">
+		<div class="clearfix visible-xs-block"></div>
+		<div class="row">
+		<div class="col-md-12">
+		<!-- Dataset -->
+						<h3 class="courierfont">Restaurant Inspection Scores by Zipcode</h3>
+						<p>View the full history of all businesses inspected from 2015 to 2017. See what date they were inspected and what their scores were on those dates.</p>
+					<form id="form_dataset">
+						<select id="thedropdown_dataset">
+						<option value="0">Choose Zipcode:</option>
+						<option value="78613">78613</option>
+						<option value="78617">78617</option>
+						<option value="78652">78652</option>
+						<option value="78653">78653</option>
+						<option value="78660">78660</option>
+						<option value="78701">78701</option>
+						<option value="78702">78702</option>
+						<option value="78703">78703</option>
+						<option value="78704">78704</option>
+						<option value="78705">78705</option>
+						<option value="78717">78717</option>
+						<option value="78719">78719</option>
+						<option value="78721">78721</option>
+						<option value="78722">78722</option>
+						<option value="78723">78723</option>
+						<option value="78724">78724</option>
+						<option value="78725">78725</option>
+						<option value="78726">78726</option>
+						<option value="78727">78727</option>
+						<option value="78728">78728</option>
+						<option value="78729">78729</option>
+						<option value="78730">78730</option>
+						<option value="78731">78731</option>
+						<option value="78732">78732</option>
+						<option value="78733">78733</option>
+						<option value="78734">78734</option>
+						<option value="78735">78735</option>
+						<option value="78736">78736</option>
+						<option value="78737">78737</option>
+						<option value="78738">78738</option>
+						<option value="78739">78739</option>
+						<option value="78741">78741</option>
+						<option value="78742">78742</option>
+						<option value="78744">78744</option>
+						<option value="78745">78745</option>
+						<option value="78746">78746</option>
+						<option value="78747">78747</option>
+						<option value="78748">78748</option>
+						<option value="78749">78749</option>
+						<option value="78750">78750</option>
+						<option value="78751">78751</option>
+						<option value="78752">78752</option>
+						<option value="78753">78753</option>
+						<option value="78754">78754</option>
+						<option value="78756">78756</option>
+						<option value="78757">78757</option>
+						<option value="78758">78758</option>
+						<option value="78759">78759</option>
+						</select>
+					</form>
+				<p>Total Restauants: <span id="answer2_dataset"></span></p>
+					<table width="80%">
+					<thead>
+					<th>Restaurant</th><th>Address</th><th>Zipcode</th><th>Inspection Date</th><th>Score</th>
+				</thead>
+				<tbody id="answer_dataset">
+				</tbody>
+				</table>		
+   		</div><!--close 12 div-->  
+   	</div><!--close row-->
+  </section><!--close Dataset section-->
+  <hr>  
+  
+  
+  
+ </div> <!--main-->  
+ 
+<!-- Graph Data Section -->
+<script type="text/javascript">
+	 
+/*Pie Bar Chart Data Section Start*/
+    google.charts.load("current", {packages:['corechart']});
+	google.charts.setOnLoadCallback(drawChart2);
+	google.charts.setOnLoadCallback(drawChart3);
+	
+	function drawChart2() {
+	  
+      selection = document.getElementById("thedropdown2").value;
+     
+     info2 = [
+     {project: "2015",  s30to40: 1, s41to50: 2, s51to60: 18, s61to70: 82},
+	 {project: "2016",  s30to40: 0, s41to50: 3, s51to60: 14, s61to70: 105},
+	 {project: "2017",  s30to40: 0, s41to50: 0, s51to60: 8, s61to70: 50},
+     ];
+     
+     for(i=0; i<info2.length; i++) { 
+       if(selection == info2[i].project) {
+       s1 = parseInt(info2[i].s30to40);
+       s2 = parseInt(info2[i].s41to50);
+       s3 = parseInt(info2[i].s51to60);
+       s4 = parseInt(info2[i].s61to70);
+        }
+        //create the if statement to read the json and have it put the appropriate cities data in the chart based on the dropdown
+
+
+    } // end for
+    
+        var data2 = google.visualization.arrayToDataTable([
+          ['Score', 'Number of Restaurants', { role: "style" }],
+          ['30-40', s1, "#0000cf"],
+          ['41-50', s2, "#0000cf"],
+          ['51-60', s3, "#0000cf"],
+          ['61-70', s4, "#0000cf"],
+         
+        ]);
+		
+		var options = {
+        title: 'Low Ranking Restaurant Scores by Year',
+        backgroundColor: '#eee',
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+        
+ 
+		var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        //find the appropriate visualization code to draw a line chart and place it in the div below called line_chart
+
+        chart2.draw(data2, options);
+      }
+      
+/*START Second Bar Chart */
+	function drawChart3() {
+	  
+      selection = document.getElementById("thedropdown3").value;
+     
+     info2 = [
+     {project: "2015",  s71to80: 688, s81to90: 2298, s91to99: 3477, s100: 1470},
+	 {project: "2016",  s71to80: 754, s81to90: 2464, s91to99: 4070, s100: 617},
+	 {project: "2017",  s71to80: 386, s81to90: 1330, s91to99: 2243, s100: 407},
+     ];
+     
+     for(i=0; i<info2.length; i++) { 
+       if(selection == info2[i].project) {
+       s1 = parseInt(info2[i].s71to80);
+       s2 = parseInt(info2[i].s81to90);
+       s3 = parseInt(info2[i].s91to99);
+       s4 = parseInt(info2[i].s100);
+        }
+        //create the if statement to read the json and have it put the appropriate cities data in the chart based on the dropdown
+
+
+    } // end for
+    
+        var data2 = google.visualization.arrayToDataTable([
+          ['Score', 'Number of Restaurants', { role: "style" }],
+          ['71-80', s1, "#0000cf"],
+          ['81-90', s2, "#0000cf"],
+          ['91-99', s3, "#0000cf"],
+          ['100', s4, "#0000cf"],
+         
+        ]);
+		
+		var options = {
+        title: 'High Ranking Restaurant Scores by Year',
+        backgroundColor: '#eee',
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+        
+ 
+		var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+        //find the appropriate visualization code to draw a line chart and place it in the div below called line_chart
+
+        chart2.draw(data2, options);
+      }	  
+	  
+/*END Bar Chart Data Section*/
+
+	
+/*Map Data Section Start*/
+	
+      google.charts.load("current", {packages:["map"]});
+      google.charts.setOnLoadCallback(drawChart);
+     
+      //data is formatted for google map
+     
+
+ var origData = [
+        ['Lat', 'Long', 'Name', 'Zipcode'],
+		[30.266919,-97.739359,'The Aquarium --- Score 64','78701'],
+		[30.341695,-97.798264,'Austin Country Club --- Score 64','78746'],
+		[30.142334,-97.569483,'Badger Food Mart --- Score 68','78617'],
+		[30.377535,-97.688756,'Baguette House & Cafe --- Score 70','78753'],
+		[30.267987,-97.74209,'Bikinis Sports Bar and Grill --- Score 60','78701'],
+		[30.111033,-97.694717,'Bread Basket - Cevron --- Score 70','78719'],
+		[30.494152,-97.790818,'Brooklyn Heights Pizzeria --- Score 70','78717'],
+		[30.267532,-97.741453,'Buffalo Billiards --- Score 65','78701'],
+		[30.241698,-97.728451,'China Express --- Score 66','78741'],
+		[30.356626,-97.747117,'Chinatown Restaurant --- Score 70','78731'],
+		[30.361351,-97.716624,'Churchs Fried Chicken --- Score 63','78758'],
+		[30.364306,-97.717517,'Chuy Panderia --- Score 70','78757'],
+		[30.388532,-97.672564,'Crowne Plaza Austin --- Score 60','78752'],
+		[30.377535,-97.688756,'Duy Vietnamese Restaurant --- Score 70','78753'],
+		[30.366569,-97.694999,'El Pollo Rico --- Score 70','78753'],
+		[30.364848,-97.717648,'El Rancho 18 --- Score 70','78757'],
+		[30.290637,-97.741418,'Fat Sals Deli --- Score 70','78705'],
+		[30.377535,-97.688756,'First chinese BBQ --- Score 70','78753'],
+		[30.256216,-97.810685,'Great Wraps Grill --- Score 66','78746'],
+		[30.357324,-97.733722,'Hanabi --- Score 70','78757'],
+		[30.268335,-97.744362,'Headliners --- Score 66','78701'],
+		[30.237367,-97.790535,'Hunan Lion Restaurant --- Score 69','78704'],
+		[30.393186,-97.843021,'Hunan Riverplace Restaurant --- Score 69','78730'],
+		[30.382246,-97.686047,'International Food Market --- Score 70','78753'],
+		[30.22075,-97.694042,'J.D.s Market --- Score 59','78741'],
+		[30.229125,-97.729753,'Java Noodles --- Score 68','78741'],
+		[30.162136,-97.688943,'JDs Supermarket Bakery/Deli --- Score 64','78719'],
+		[30.388631,-97.70993,'Kiefers Cafe & Catering --- Score 61','78758'],
+		[30.347982,-97.712705,'King Billiard --- Score 70','78758'],
+		[30.358918,-97.736165,'Korea House --- Score 54','78757'],
+		[30.246432,-97.756587,'La Mexicana Bakery --- Score 67','78704'],
+		[30.315645,-97.732453,'Mandolas Italian Market --- Score 70','78751'],
+		[30.371982,-97.692189,'Matamoros Tacos --- Score 70','78758'],
+		[30.29078,-97.628164,'Mi Pueblo Meat Market --- Score 65','78724'],
+		[30.288025,-97.743904,'Mongolian Hot Pot --- Score 59','78705'],
+		[30.377535,-97.688756,'New Fortune Chinese Seafood Restaruant --- Score 70','78753'],
+		[30.362722,-97.697479,'North Hunan --- Score 70','78758'],
+		[30.408324,-97.745542,'Pacific Rim Shushi & Yakitori Lounge --- Score 70','78757'],
+		[30.371015,-97.727093,'Pars Supermarket --- Score 70','78757'],
+		[30.381115,-97.687031,'Peace Bakery & Deli --- Score 61','78758'],
+		[30.447067,-97.789736,'Pei Wei Asian Diner --- Score 70','78729'],
+		[30.381115,-97.687031,'Pho Dan --- Score 70','78758'],
+		[30.377535,-97.688756,'Pho Saigon --- Score 70','78753'],
+		[30.356756,-97.731564,'Pho Thaison --- Score 70','78757'],
+		[30.357324,-97.733722,'Phonatic Vietnamese Cuisine --- Score 70','78757'],
+		[30.381115,-97.687031,'Rice Bowl Cafe --- Score 70','78758'],
+		[30.367072,-97.700301,'Rutland Market --- Score 70','78758'],
+		[30.306222,-97.744799,'Santa Rita --- Score 70','78756'],
+		[30.388532,-97.672564,'Star Seeds Cafe --- Score 70','78722'],
+		[30.267334,-97.743353,'Summit --- Score 64','78701'],
+		[30.27872,-97.741645,'Sushi Junai --- Score 70','78701'],
+		[30.351218,-97.708882,'Tam Deli Cafe --- Score 57','78758'],
+		[30.361112,-97.69792,'Taqueria Guadalajara --- Score 61','78753'],
+		[30.362742,-97.697469,'Tempura Grill --- Score 70','78758'],
+		[30.388532,-97.672564,'Texas Land & Cattle --- Score 66','78723'],
+		[30.334464,-97.807072,'Thai Spice --- Score 59','78746'],
+		[30.237275,-97.790639,'The Park on South Lamar --- Score 55','78704'],
+		[30.355469,-97.703012,'Viva Food Mart - Taqueria --- Score 70','78758']    
+        ];
+
+
+        
+          function drawChart() {
+                 
+        //form to change based on dropdown
+        
+        selection = document.getElementById("thedropdown").value; 
+        
+        //if no selection, hides map, asks to select
+        if(selection == "0") {
+//writes origData to html for initial view, line by line with breaks
+        for(i=1; i<origData.length; i++) {
+        document.getElementById("mapanswer").innerHTML += "<tr><td>" + origData[i][2] + "</td><td>" + origData[i][3] + "</td></tr>";
+        } // end initial for
+        
+        // creates visualization using newData array
+        var data3 = google.visualization.arrayToDataTable(origData);
+        
+        var map = new google.visualization.Map(document.getElementById('map_div'));
+        map.draw(data3, {showTip: true});
+
+        //document.getElementById("map_div").style.visibility = "hidden";
+        //document.getElementById("mapanswer").innerHTML = "Select a Picnic option";
+        }
+        
+        // if there is a selection
+        else {
+        //start a new array to include only data that is selected
+        var newData = [['Lat', 'Long', 'Name', 'Zipcode']];
+        
+        //loop to go match selection and create a new array
+        for(i=1;i<origData.length; i++) {
+            if(origData[i][3] == selection){
+            // only data that meets the selection criteria goes into newData array
+            newData.push(origData[i]);
+            
+            }//end if
+            
+            
+        }//end for
+        
+        //clears out answer div in html
+        document.getElementById("map_div").style.visibility = "visible";
+        document.getElementById("mapanswer").innerHTML = " ";
+        
+        //loop that writes the data in newData, line by line with breaks.
+        for(i=1; i<newData.length; i++) {
+        document.getElementById("mapanswer").innerHTML += "<tr><td>" + newData[i][2] + "</td><td>" + newData[i][3] + "</td></tr>";
+        }
+       
+        // creates visualization using newData array
+        var data = google.visualization.arrayToDataTable(newData);
+        var map = new google.visualization.Map(document.getElementById('map_div'));
+        map.draw(data, {showTip: true});
+       
+      } // end else
+   
+      }//end function
+	  
+/*START Dataset with Filter Section*/	
+
+restaurantscores = JSON.parse(restaurantscores);
+document.getElementById("form_dataset").onchange = function() {
+j=0;
+
+FIELD3 = document.getElementById("thedropdown_dataset").value;
+document.getElementById("answer_dataset").innerHTML = " ";
+ for(i=0;i<restaurantscores.length; i++) {
+  if(FIELD3 == restaurantscores[i].FIELD3) {
+ document.getElementById("answer_dataset").innerHTML += "<tr><td>" + restaurantscores[i].FIELD1 + "</td><td>" + restaurantscores[i].FIELD2 + "</td><td>" +restaurantscores[i].FIELD3 + "</td><td>" + restaurantscores[i].FIELD4 + "</td><td>" + restaurantscores[i].FIELD5 + "</td></tr>";
+ j=j+1;
+ }
+ }
+ 
+ document.getElementById("answer2_dataset").innerHTML = j;
+ 
+ }
+/*END Dataset with Filter Section*/
+	  
+    </script>
+	
+	<!-- Google Map API Key -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3TIy5Pv1wJWh3uvOjmvofd-TKyZMHo9U" async defer></script> 
+ 
+</body>
+
+
+      
+</html>

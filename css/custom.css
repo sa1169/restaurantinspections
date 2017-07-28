@@ -1,0 +1,96 @@
+.bodycontainer {
+	margin-top: 3%;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding-top: 1%;
+	padding-left: 3%;
+	padding-bottom: 2%;
+	padding-right: 2%;
+	background: #F5F5F5;
+	font-family: 'Playfair Display', 'Audiowide', Verdana, Arial, Helvetica, sans-serif;
+    overflow: hidden;
+	font-size: 17px;
+}	
+
+#map_div {
+    width: 50%;
+    }
+
+#form2 {
+	display: none;
+}
+
+#form3 {
+	display: none;
+}
+
+#getstartedbutton {
+	display: none;
+}
+
+.headerbar {
+ width: 100%;
+ margin-bottom: 5%; 
+ margin-top: 2%;
+ background: #D2B48C;
+}	
+
+.bars {
+background-color: green;
+height: 25px;
+margin: 10px 0 0 0;3
+transition:width 1s ease-in;
+border-radius: 5px;
+}
+
+
+body {
+	background: #ffffff;
+}
+
+.bodynotused {
+	background: #D2B48C url(../images/avengerslogos.jpg) top center;
+	background-repeat: repeat;
+}
+
+@media screen and (max-width: 1240px) {
+body {
+	background: #D2B48C url(avengerslogos.jpg) top center;
+	background-repeat: repeat;	}
+.bodycontainer {
+	margin-right: 5%; }
+} 
+
+@media screen and (max-width: 800px) {
+body {
+	background: #D2B48C url(avengerslogos.jpg) top center;
+	background-repeat: repeat; }
+	
+.bodycontainer {
+	margin-right: 5%; }
+} 
+
+@media screen and (max-width: 600px) {
+body {
+	background: #D2B48C url(avengerslogos.jpg) top center;
+	background-repeat: repeat; }
+	
+.bodycontainer {
+	margin-right: 5%; }
+
+.smallscreenquestion {
+display: block; }
+
+.regscreenquestion {
+ display: none; }	
+	
+} 
+
+
+.dontusethisfont {
+  font-family: 'Audiowide', Verdana, Arial, Helvetica, sans-serif;
+}
+
+.videogametxt {
+	font-family: 'Audiowide', Verdana, Arial, Helvetica, sans-serif;
+}
